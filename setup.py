@@ -1,4 +1,4 @@
-"""Installation script for api: search l3s gateway."""
+"""Installation script for api: search l3s recsys service."""
 from pathlib import Path
 from setuptools import setup, find_packages
 
