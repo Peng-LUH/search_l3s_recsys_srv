@@ -6,7 +6,7 @@ from flask_cors import CORS
 from flask_migrate import Migrate
 from flask_sqlalchemy import SQLAlchemy
 
-from search_l3s_search_srv.config import get_config
+from search_l3s_recsys.config import get_config
 
 cors = CORS()
 db = SQLAlchemy()
