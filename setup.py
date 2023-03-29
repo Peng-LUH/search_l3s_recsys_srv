@@ -51,7 +51,7 @@ EXTRAS_REQUIRE = {
 }
 
 setup(
-    name="search_l3s_recsys_srv",
+    name="search-l3s-recsys",
     description=DESCRIPTION,
     long_description=README,
     long_description_content_type="text/markdown",
@@ -61,7 +61,7 @@ setup(
     maintainer=AUTHOR,
     maintainer_email=AUTHOR_EMAIL,
     license="MIT",
-    url="",
+    url="https://github.com/Peng-LUH/search_l3s_recsys_srv",
     project_urls=PROJECT_URLS,
     packages=find_packages(where="src"),
     package_dir={"": "src"},

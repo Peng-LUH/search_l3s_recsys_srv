@@ -1,8 +1,8 @@
 Metadata-Version: 2.1
-Name: search-l3s-recsys-srv
+Name: search-l3s-recsys
 Version: 0.1
 Summary: Boilerplate Flask API with Flask-RESTx, SQLAlchemy, pytest, flake8, tox configured
-Home-page: 
+Home-page: https://github.com/Peng-LUH/search_l3s_recsys_srv
 Author: Shengrui Peng
 Author-email: peng@l3s.de
 Maintainer: Shengrui Peng

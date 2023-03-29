@@ -1,7 +1,7 @@
 """Flask CLI/Application entry point."""
 import os
 
-from search_l3s_recsys_srv import create_app, db
+from search_l3s_recsys import create_app, db
 
 app = create_app(os.getenv("FLASK_ENV", "development"))
 

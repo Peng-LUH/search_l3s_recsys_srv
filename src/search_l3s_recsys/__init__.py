@@ -19,7 +19,7 @@ def create_app(config_name):
     app.config.from_object(get_config(config_name))
 
     # to avoid a circular import
-    from search_l3s_search_srv.api import api_bp
+    from search_l3s_recsys.api import api_bp
     
     app.register_blueprint(api_bp)
     cors.init_app(app)
