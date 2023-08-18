@@ -1,2 +1,5 @@
 .env
 .venv
+./src/search_l3s_recsys.egg-info
+./src/search_l3s_recsys.egg-info/*
+**/__pycache__

@@ -1,0 +1,13 @@
+README.md
+pyproject.toml
+setup.py
+src/search_l3s_recsys/__init__.py
+src/search_l3s_recsys/config.py
+src/search_l3s_recsys.egg-info/PKG-INFO
+src/search_l3s_recsys.egg-info/SOURCES.txt
+src/search_l3s_recsys.egg-info/dependency_links.txt
+src/search_l3s_recsys.egg-info/requires.txt
+src/search_l3s_recsys.egg-info/top_level.txt
+src/search_l3s_recsys/api/__init__.py
+src/search_l3s_recsys/api/test/__init__.py
+src/search_l3s_recsys/api/test/endpoints.py
