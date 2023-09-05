@@ -5,7 +5,7 @@ from flask_bcrypt import Bcrypt
 from flask_cors import CORS
 from flask_migrate import Migrate
 from flask_sqlalchemy import SQLAlchemy
-import os
+import os, socket
 
 from search_l3s_recsys.config import get_config
 
@@ -19,7 +19,8 @@ def create_app(config_name):
     app = Flask(__name__)
     app.config.from_object(get_config(config_name))
 
-
+    os.environ["BASE_PATH"] = os.getcwd()
+    os.environ["BASE_DATASETS_PATH"] = os.path.join(os.getcwd(), "datasets")
     
     
     # to avoid a circular import

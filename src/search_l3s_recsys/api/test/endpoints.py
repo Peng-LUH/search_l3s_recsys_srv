@@ -21,4 +21,4 @@ ns_test.models[test_model.name] = test_model
 class RecsysTest(Resource):
     @ns_test.marshal_with(test_model)
     def get(self):
-        return {"message": "success"}
+        return {"message": "success"}, HTTPStatus.OK

@@ -20,3 +20,6 @@ api = Api(api_bp,
 from search_l3s_recsys.api.test.endpoints import ns_test
 api.add_namespace(ns_test, path="/recsys-test")
 
+from search_l3s_recsys.api.random.endpoints import ns_random
+api.add_namespace(ns_random, path="/random")
+
