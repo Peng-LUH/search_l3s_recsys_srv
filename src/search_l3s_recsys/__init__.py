@@ -33,5 +33,5 @@ def create_app(config_name):
     
     @app.route('/')
     def index():
-        return redirect(f"http://{os.getenv('HOST_IP')}:{os.getenv('L3S_SEARCH_PORT')}/l3s-search/", code=200)
+        return redirect(f"http://{os.getenv('HOST_IP')}:{os.getenv('L3S_RECSYS_PORT')}/l3s-recsys/", code=200)
     return app
