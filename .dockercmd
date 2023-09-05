@@ -1,5 +1,5 @@
 docker build -t test-recsys-srv .
-docker run -d -p 5002:5000 --name test-recsys-ps test-recsys-srv
+docker run -d -p 9042:9042 --name test-recsys-ps test-recsys-srv
 
 docker ps
 docker stop <container-id>
