@@ -9,7 +9,7 @@ api_bp = Blueprint("api", __name__, url_prefix="/l3s-recsys")
 
 
 api = Api(api_bp,
-          version="0.0.1",
+          version="0.0.2",
           title="L3S Recommendation Service for SEARCH",
           description="Welcome to the Swagger UI documentation site!",
         #   doc="/ui",
