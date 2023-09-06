@@ -5,5 +5,5 @@ random_request_model = Model("RandomRequest", {
 })
 
 random_response_model = Model("RandomResponse", {
-    "id": fields.String(required=True, attribute='@id')
+    "id": fields.List(fields.String, required=True)
 })

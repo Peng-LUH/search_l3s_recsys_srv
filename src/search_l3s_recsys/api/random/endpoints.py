@@ -47,10 +47,18 @@ class RandomRecommendation(Resource):
                 raise ValueError("Number of recommendation cannot be negativ")
             
             random_elements = random.sample(data_arr, num_of_rec)
-            
+            print(type(random_elements))
         except ValueError as e:
             return e.args, HTTPStatus.BAD_REQUEST
         except TypeError as e:
             return e.args, HTTPStatus.CONFLICT
         
-        return random_elements, HTTPStatus.CREATED
+        
+        ids = []
+        for e in random_elements:
+            print(e['@id'])
+            ids.append(e["@id"])
+        
+        response = {"id": ids}
+        
+        return response, HTTPStatus.CREATED
