@@ -48,17 +48,17 @@ class RandomRecommendation(Resource):
             
             random_elements = random.sample(data_arr, num_of_rec)
             print(type(random_elements))
+            ids = []
+            for e in random_elements:
+                print(e['@id'])
+                ids.append(e["@id"])
+            
+            print(type(ids))
+            response = {"results": ids}
+            
+            return response, HTTPStatus.CREATED
+        
         except ValueError as e:
             return e.args, HTTPStatus.BAD_REQUEST
         except TypeError as e:
             return e.args, HTTPStatus.CONFLICT
-        
-        
-        ids = []
-        for e in random_elements:
-            print(e['@id'])
-            ids.append(e["@id"])
-        
-        response = {"id": ids}
-        
-        return response, HTTPStatus.CREATED
