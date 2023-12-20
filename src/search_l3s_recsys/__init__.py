@@ -1,6 +1,6 @@
 """Flask app initialization via factory pattern."""
 
-from flask import Flask, redirect
+from flask import Flask, redirect, request
 from flask_bcrypt import Bcrypt
 from flask_cors import CORS
 from flask_migrate import Migrate
@@ -22,7 +22,11 @@ def create_app(config_name):
     os.environ["BASE_PATH"] = os.getcwd()
     os.environ["BASE_DATASETS_PATH"] = os.path.join(os.getcwd(), "datasets")
     
-    
+    @app.route('/')
+    def index():
+        #return redirect(f"http://{os.getenv('HOST_IP')}:{os.getenv('L3S_RECSYS_PORT')}/l3s-recsys/", code=200)
+        return redirect(f"{request.host_url}l3s-recsys/", code=200)
+
     # to avoid a circular import
     from search_l3s_recsys.api import api_bp
     
@@ -32,7 +36,6 @@ def create_app(config_name):
     migrate.init_app(app, db)
     bcrypt.init_app(app)
     
-    @app.route('/')
-    def index():
-        return redirect(f"http://{os.getenv('HOST_IP')}:{os.getenv('L3S_RECSYS_PORT')}/l3s-recsys/", code=200)
+
+
     return app

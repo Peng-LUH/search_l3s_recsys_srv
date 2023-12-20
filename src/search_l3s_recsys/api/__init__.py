@@ -1,6 +1,9 @@
 """API blueprint configuration"""
 from flask import Blueprint
 from flask_restx import Api
+import sys
+
+# sys.path.append("..")
 
 
 
@@ -18,8 +21,11 @@ api = Api(api_bp,
 
 
 from search_l3s_recsys.api.test.endpoints import ns_test
-api.add_namespace(ns_test, path="/recsys-test")
-
 from search_l3s_recsys.api.random.endpoints import ns_random
+from search_l3s_recsys.api.trends.endpoints import ns_trends
+
+api.add_namespace(ns_test, path="/recsys-test")
 api.add_namespace(ns_random, path="/random")
+api.add_namespace(ns_trends, path="/trends")
+
 
