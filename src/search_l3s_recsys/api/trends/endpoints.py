@@ -72,44 +72,6 @@ class SearchJobs(Resource):
 
 
 
-@ns_trends.route("/skills/", endpoint="skills")
-class GetSkills(Resource):   
-    @ns_trends.marshal_with(dto_skills_response)
-    @ns_trends.expect(parser)
-    def get(self):   
-            "get skills"    
-
-            args = parser.parse_args()
-            loc, job_name, radius = args['loc'], args['job_name'], args['radius']        
-            # loc = request.args.get('loc')
-            # job_name = request.args.get('job_name')
-            # radius = request.args.get('radius')
-
-            assert radius>=0, abort(400, "Invalid radius, please try again with non-negative radius.")
-
-
-            from search_l3s_recsys.api.trends.logic import Trends
-            trend = Trends()
-
-            try:
-                jwt = trend.get_jwt()
-            except:
-                  abort(501, "Connection to arbeitsagentur is not available.")    
-
-            assert "access_token" in jwt.keys(), abort(501, "Invalid Access token. Connection to arbeitsagentur is not available.")        
-
-            results = trend.search(jwt["access_token"], job_name, loc, radius)
-
-            assert "stellenangebote" in results.keys(), abort(400,f"No job offers for job name: '{job_name}' at location: '{loc}'")
-
-            skills_compilation = trend.formal_skills(jwt["access_token"], results["stellenangebote"])
-
-            assert len(skills_compilation)>0, abort(400,f"No Skills for job name: '{job_name}' at location: '{loc}'")
-
-        
-            return {"skills": skills_compilation},  HTTPStatus.OK
-    
-
 
 parser_trends = ns_trends.parser()
 parser_trends.add_argument('loc', type=str, required=True, help='location for searching job', default="berlin")
@@ -240,3 +202,16 @@ class GetTrends(Resource):
 
             return {"results":results},  HTTPStatus.OK
 
+
+@ns_trends.route("/trending-tasks/", endpoint="trending_tasks")
+class TrendingTasks(Resource):
+      def get(self):
+            '''get trending tasks/learning units'''
+            return {"message": "not implemented"}, HTTPStatus.OK
+      
+
+@ns_trends.route("/trending-paths/", endpoint="trending_paths")
+class TrendingPaths(Resource):
+      def get(self):
+            '''get trending learning paths'''
+            return {"message": "not implemented"}, HTTPStatus.OK

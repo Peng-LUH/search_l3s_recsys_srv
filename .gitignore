@@ -1,5 +1,7 @@
 .env
 .venv
+**/.vscode/*
+**/.bash/*
 .dockercmd
 **/docker-compose.yml
 ./src/search_l3s_recsys.egg-info
@@ -7,3 +9,4 @@
 **/__pycache__/*
 **/*.egg-info/*
 **/datasets/*
+**/.test/*

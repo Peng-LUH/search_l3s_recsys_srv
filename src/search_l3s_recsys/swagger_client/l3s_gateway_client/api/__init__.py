@@ -1,9 +1,0 @@
-from __future__ import absolute_import
-
-# flake8: noqa
-
-
-from search_l3s_recsys.swagger_client.l3s_gateway_client.api.ai_meta_service_api import AIMetaServiceApi
-from search_l3s_recsys.swagger_client.l3s_gateway_client.api.l3_s_database_api import L3SDatabaseApi
-from search_l3s_recsys.swagger_client.l3s_gateway_client.api.recsys_service_api import RecsysServiceApi
-from search_l3s_recsys.swagger_client.l3s_gateway_client.api.search_service_api import SearchServiceApi
