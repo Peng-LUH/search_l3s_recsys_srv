@@ -14,6 +14,7 @@ RUN pip install -e .
 ENV FLASK_APP=run.py
 ENV FLASK_DEBUG=1
 ENV FLASK_RUN_PORT=9042
+ENV SSE_SEARCH_HOST="http://search.mls2.de:3000"
 
 CMD [ "flask", "run", "--port=9042", "--host=0.0.0.0"]
 
