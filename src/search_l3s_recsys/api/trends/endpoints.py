@@ -81,7 +81,7 @@ parser_trends.add_argument('topk', type=int, required=True, help='top k trending
 
 
 @ns_trends.route("/trending-skills/", endpoint="trending-skills")
-class GetTrends(Resource):   
+class TrendingSkills(Resource):   
     @ns_trends.marshal_with(dto_trending_skills_response)  
     @ns_trends.expect(parser_trends)
     def get(self):   
