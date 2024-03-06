@@ -69,7 +69,7 @@ class RecsysTestConnectionSSE(Resource):
         print(url)
         result = {}
         try:
-            response = requests.head(url)
+            response = requests.head(url+"/api")
             if response.status_code == 200:
                 result.update({"host_url": url, "status": 'success'})
                 return result, HTTPStatus.OK
