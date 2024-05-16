@@ -26,7 +26,6 @@ gateway_searcher_api = l3s_gateway_client.SearchServiceApi(api_client=client_l3s
 sys.path.append(os.getcwd())
 
 
-
 from dotenv import load_dotenv
 load_dotenv()
 

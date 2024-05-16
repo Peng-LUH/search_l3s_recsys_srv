@@ -195,7 +195,6 @@ class GetTrends(Resource):
             for skill in sorted_kv_list:
                   top_k_trending_skills.append(skill[0])
             
-        
             results = trend.recommend(top_k_trending_skills)
 
             assert len(results)>1, abort(400, "No skill/task/path to recommend.")
