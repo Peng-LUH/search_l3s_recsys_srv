@@ -57,6 +57,7 @@ class TrendSkillsBfn(object):
 
     def trending_skills(self, query, k):
         job_list = self.job_by_query(query)
+        assert len(job_list)>0, "No jobs found."
         skills = {}
         for job_id in job_list:
             response = sse_brufenet_api.berufe_net_controller_get_digital_competencies_by_job_id(job_id)
@@ -68,15 +69,16 @@ class TrendSkillsBfn(object):
 
 
         top_skills = Counter(skills).most_common(k)
+        assert len(top_skills)>0, "No jobs found."
 
         return top_skills    
 
-    def recommend(self, query, k):
+    def recommend(self, query, k, user_id):
         top_k_trending_skills = self.trending_skills(query, k)
         result_list = []
         for skill,_ in top_k_trending_skills:   
 
-            response = gateway_searcher_api.get_search_service("1", skill)
+            response = gateway_searcher_api.get_search_service(user_id, skill)
 
             #response = gateway_searcher_api.get_search_service(user_id="1", query=skill, entity_type="all", num_results=2)
             if len(response.results)!=0:
