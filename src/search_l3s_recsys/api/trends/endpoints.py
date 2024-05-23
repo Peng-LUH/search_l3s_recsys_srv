@@ -81,7 +81,7 @@ parser_trends.add_argument('topk', type=int, required=True, help='top k trending
 
 
 @ns_trends.route("/trending-skills/", endpoint="trending-skills")
-class TrendingSkills(Resource):   
+class GetTrendingSkills(Resource):   
     @ns_trends.marshal_with(dto_trending_skills_response)  
     @ns_trends.expect(parser_trends)
     def get(self):   
@@ -145,7 +145,7 @@ parser_trends.add_argument('owner', type=str, required=True, help='owner', defau
 
 
 @ns_trends.route("/trending-recommend/", endpoint="recommend-trendings")
-class GetTrends(Resource):   
+class GetRecommendTrends(Resource):   
     @ns_trends.marshal_with(dto_trends_recommend_response_list)  
     @ns_trends.expect(parser_trends)
     def get(self):   
@@ -171,9 +171,12 @@ class GetTrends(Resource):
 
             results = trend.search(jwt["access_token"], job_name, loc, radius)
 
+
             assert "stellenangebote" in results.keys(), abort(400,f"No job offers for job name: '{job_name}' at location: '{loc}'")
 
             skills_compilation = trend.formal_skills(jwt["access_token"], results["stellenangebote"])
+
+            print(skills_compilation)
 
             assert len(skills_compilation)>0, abort(400,f"No Trending Skills for job name: '{job_name}' at location: '{loc}'")
 
