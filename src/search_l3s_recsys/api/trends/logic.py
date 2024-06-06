@@ -15,8 +15,9 @@ requests.packages.urllib3.disable_warnings(InsecureRequestWarning)
 sys.path.append('..')
 
 
-from search_l3s_recsys.swagger_client import l3s_gateway_client
-# from swagger_client import l3s_gateway_client
+#from search_l3s_recsys.swagger_client import l3s_gateway_client
+from swagger_client import l3s_gateway_client
+
 l3s_gateway_config = l3s_gateway_client.Configuration()
 
  
@@ -108,6 +109,9 @@ class Trends(object):
         for offer in offers:
             details = self.job_details(jwt, offer["refnr"])
             if "fertigkeiten" in details:
+                print("#"*100)
+                print(details["fertigkeiten"])
+
                 skills[offer["refnr"]] = {"job_title" : details["beruf"], "skills" : details["fertigkeiten"]}
         return skills
 
@@ -133,8 +137,14 @@ class Trends(object):
 
     def recommend(self, top_k_trending_skills):
         result_list = []
-        for skill in top_k_trending_skills:     
-            response = gateway_searcher_api.get_search_service(owner= "1", user_id="1", query=skill, entity_type="all", num_results=2)
+        for skill in top_k_trending_skills:   
+            print("#"*100) 
+            print("skill", skill)
+
+            response = gateway_searcher_api.get_search_service("1", skill)
+
+ 
+            #response = gateway_searcher_api.get_search_service(user_id="1", query=skill, entity_type="all", num_results=2)
             if len(response.results)!=0:
                 for item in response.results:
                     entity_id_type = {}
