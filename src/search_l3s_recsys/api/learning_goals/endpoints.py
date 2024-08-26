@@ -30,13 +30,13 @@ class RecLearningGoals(Resource):
             from search_l3s_recsys.api.learning_goals.logic import LearningGoalsRec
             learning_goals = LearningGoalsRec()
     
-            results = {
+            results = [{
                  "entity_id": "string",
                  "entity_type": "string",
                  "owner": "string",
                  "similarity": 1.0,
                  "user_id": user_id
-                    }
+                    }]
             
 
             try:

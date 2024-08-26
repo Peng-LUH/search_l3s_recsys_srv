@@ -59,7 +59,6 @@ class InterestRec(object):
     def recommend(self, user_id):
         interests = self.get_interests(user_id)
 
-        interests = ["Machine"]
         result_list = []
         for interest  in interests:   
             #response = gateway_searcher_api.get_search_service(user_id, interest)

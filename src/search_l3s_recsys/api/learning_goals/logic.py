@@ -50,16 +50,20 @@ class LearningGoalsRec(object):
 
     def get_learning_goals(self, id):
 
-        response = requests.get(os.getenv("MLS_SEARCH_HOST")+"/career-profiles/{id}".format(id=id))
-        career_profile = response.json()
+        ## Extract the learning goals from the user's profile. Please use the correct endpoint to get the learning goals of the user.
+        # For now, it uses the professional interests of the user as learning goals. 
 
-        interest = career_profile["professionalInterests"]
+        response = requests.get(os.getenv("MLS_SEARCH_HOST")+"/career-profiles/{id}".format(id=id)) ### Find the learning goals of the user
+        profile = response.json()
+
+
+        interest = profile["professionalInterests"] 
         return interest    
 
     def recommend(self, k, user_id):
         learning_goals = self.get_learning_goals(user_id)
         result_list = []
-        for goal,_ in learning_goals:   
+        for goal in learning_goals:   
 
             response = gateway_searcher_api.get_search_service(user_id, goal)
 

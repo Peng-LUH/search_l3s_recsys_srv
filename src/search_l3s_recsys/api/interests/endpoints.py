@@ -28,13 +28,13 @@ class RecInterests(Resource):
             from search_l3s_recsys.api.interests.logic import InterestRec
             int_rec = InterestRec()
     
-            results = {
+            results = [{
                  "entity_id": "string",
                  "entity_type": "string",
                  "owner": "string",
                  "similarity": 1.0,
                  "user_id": user_id
-                    }
+                    }]
             
             try:
                   results = int_rec.recommend(user_id)
